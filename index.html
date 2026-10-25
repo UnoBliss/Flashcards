@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flashcards</title>
+    
+    <!-- Link the PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Theme color for mobile browser status bar -->
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- iOS support (optional, but good practice) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="https://script.google.com/macros/s/AKfycbxI1AaNA_6KvcmoaSyHvaQo6gKjjFDzsw1sSNVUZ0mzDt1KIAGz8FhTfe1F_WN36FxTGA/exec" allow="geolocation; microphone; camera"></iframe>
+
+    <script>
+        // Register a basic service worker to enable PWA install prompt in Chrome
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registered!', reg))
+                    .catch(err => console.log('Service Worker registration failed: ', err));
+            });
+        }
+    </script>
+</body>
+</html>
